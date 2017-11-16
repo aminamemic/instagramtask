@@ -1,0 +1,22 @@
+<div *ngIf="display" id="instagram-home-wrapper" class="col-md-12 col-xs-12 col-sm-12">
+
+    <div class="col-md-6 col-md-offset-3 col-xs-10 instagram-images-wrapper">
+        <div class="col-md-3 col-xs-4" style="padding-bottom: 15px;">
+            <img src="{{userProfile.user.profile_picture}}" class="img-thumbnail">
+        </div>
+        <div class="col-md-9 col-xs-8">
+            <div><h5>Name:</h5><p>{{userProfile.user.full_name}}</p></div>
+            <div><h5>Username:</h5><p>{{userProfile.user.username}}</p></div>
+           <div> <h5>User bio:</h5><p>{{userProfile.user.bio}}</p></div>
+            <div><h5>Media:</h5><p>{{userProfile.user.counts.media}}</p></div>
+            <div><h5>Follows:</h5><p>{{userProfile.user.counts.follows}}</p></div>
+            <div><h5>Followed by:</h5><p>{{userProfile.user.counts.followed_by}}</p></div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-md-offset-3 col-xs-10 instagram-images-wrapper">
+        <div class="col-md-12 col-xs-12 instagram-images-container">
+            <img *ngFor="let image of userProfile.media" src="{{image.images.thumbnail.url}}" class="img-thumbnail">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div id="login" class="container-login col-md-12 col-sm-12 col-xs-12">
+    <div class="col-md-6 col-xs-6 col-sm-6">
+        <div class="text-box col-md-8 col-md-offset-8 col-xs-10">
+            <h3>Instagram Profile App</h3>
+            <form id="login-form" class="ng-untouched ng-pristine ng-invalid" [formGroup]="loginForm">
+
+                <div class="form-group">
+                    <input class="form-control ng-untouched ng-pristine ng-invalid"
+                           type="text" placeholder="Username"
+                           (keypress)="initValidators(validateFields.USERNAME)" name="username"
+                           [(ngModel)]="loginData.username" [formControl]="loginForm.controls['usernameValidator']"
+                           [class.error]="!loginForm.controls['usernameValidator'].valid && validateUserIDErrors" required>
+                    <p *ngIf="!loginForm.controls['usernameValidator'].valid && validateUserIDErrors"
+                       class="error-msg">
+                        Please enter your username</p>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control ng-untouched ng-pristine ng-invalid" name="password"
+                           type="password" placeholder="Password" (keypress)="initValidators(validateFields.PASSWORD)"
+                           [(ngModel)]="loginData.password" [formControl]="loginForm.controls['passwordValidator']"
+                           [class.error]="!loginForm.controls['passwordValidator'].valid && validatePasswordErrors" required>
+                    <p *ngIf="!loginForm.controls['passwordValidator'].valid && validatePasswordErrors"
+                       class="error-msg">
+                        Please enter your password</p>
+                </div>
+                <div class="col-md-4 col-md-offset-4 col-xs-4 button-wrapper">
+                    <button (click)="login()" class="btn btn-default btn-primary" type="submit" [disabled]="!loginForm.valid">LOGIN</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
